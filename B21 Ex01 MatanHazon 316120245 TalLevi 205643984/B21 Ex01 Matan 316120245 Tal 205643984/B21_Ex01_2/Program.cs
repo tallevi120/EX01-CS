@@ -7,6 +7,7 @@ namespace B21_Ex01_2
         {
             int height = 5;
             PrintHourglass(height);
+            Console.ReadLine();//delete in the end !!!
         }
         public static void PrintHourglass(int i_HeightOfHourglass, int i_NumOfSpaces = 0)
         {

@@ -9,6 +9,7 @@ namespace B21_Ex01_3
             Console.WriteLine(string.Format("Hello, Please enter integer number for the height of the hourglass :"));
             heightForHourglass = TakeNumberFromTheUser();
             B21_Ex01_2.Program.PrintHourglass(heightForHourglass);
+            Console.ReadLine();//delete in the end !!!
         }
         public static int TakeNumberFromTheUser()
         {

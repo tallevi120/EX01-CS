@@ -29,6 +29,7 @@ The avarage number '1' in the all inputs = {1}", CheckAvarageFromThisNumber(sbAl
             Console.WriteLine(string.Format(@"We have {0} numbers that is Acending", HowManyNumbersIsAcending(number1.ToString(), number2.ToString(), number3.ToString())));
             Console.WriteLine(string.Format(@"The smallest number is {0}", FindSmallestNumber(number1, number2, number3)));
             Console.WriteLine(string.Format(@"The biggest number is {0}", FindBiggestNumber(number1, number2, number3)));
+            Console.ReadLine();//delete in the end !!!
         }
         public static string TakeNumberFromTheUser(int i_RequiredLength)
         {

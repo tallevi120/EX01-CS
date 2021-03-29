@@ -24,60 +24,51 @@ namespace B21_Ex01_1
 Number 2 decimal value = {1}
 Number 3 decimal value = {2}", number1, number2, number3));
             Console.WriteLine(string.Format(@"The avarage number '0' in the all inputs = {0}
-The avarage number '1' in the all inputs = {1}", CheckAvarageFromThisNumber(sbAllNumbers.ToString(), '0', numOfInputs), CheckAvarageFromThisNumber(sbAllNumbers.ToString(), '1', numOfInputs)));
+The avarage number '1' in the all inputs = {1}", CheckAvarageFromThisNumber(sbAllNumbers.ToString(), '0', numOfInputs), CheckAvarageFromThisNumber(sbAllNumbers.ToString(), '1', numOfInputs)));//what if avarage is float?
             Console.WriteLine(string.Format(@"We have {0} numbers that is power of two", HowManyIsPowerOfTwo(number1, number2, number3)));
             Console.WriteLine(string.Format(@"We have {0} numbers that is Acending", HowManyNumbersIsAcending(number1.ToString(), number2.ToString(), number3.ToString())));
             Console.WriteLine(string.Format(@"The smallest number is {0}", FindSmallestNumber(number1, number2, number3)));
-            Console.WriteLine(string.Format(@"The bigest number is {0}", FindBiggestNumber(number1, number2, number3)));
-            Console.ReadLine();
+            Console.WriteLine(string.Format(@"The biggest number is {0}", FindBiggestNumber(number1, number2, number3)));
         }
         public static string TakeNumberFromTheUser(int i_RequiredLength)
         {
             string io_BinaryNumber = default;
             bool i_IfInputInvalid = false;
-            while (i_IfInputInvalid == false)
+            while(i_IfInputInvalid == false)
             {
-                io_BinaryNumber = System.Console.ReadLine();
+                io_BinaryNumber = Console.ReadLine();
                 i_IfInputInvalid = IsValid(io_BinaryNumber, i_RequiredLength);//Will check if all binary & length is as required
-                if (i_IfInputInvalid == false)
+                if(i_IfInputInvalid == false)
                 {
                     Console.WriteLine("Invalid input, please enter only 7 binary digits:");
                 }
             }
             return io_BinaryNumber;
         }
-        private static bool IsValid(string i_InputString, int i_RequiredLength)
+        public static bool IsValid(string i_InputString, int i_RequiredLength)
         {
-            if (IsBinary(i_InputString) && CheckLength(i_InputString, i_RequiredLength))
-            {
-                return true;
-            }
-            return false;
+            return IsBinary(i_InputString) && CheckLength(i_InputString, i_RequiredLength);
         }
-        private static bool IsBinary(string i_InputString)
+        public static bool IsBinary(string i_InputString)
         {
-            foreach (char c in i_InputString)
+            foreach(char c in i_InputString)
             {
-                if (c != '0' && c != '1')//If recognize one charactar that not 0 or 1, return false. ( means NOT binary)
+                if(c != '0' && c != '1')//If recognize one charactar that not 0 or 1, return false. ( means NOT binary)
                 {
                     return false;
                 }
             }
             return true;
         }
-        private static bool CheckLength(string i_InputString, int i_RequiredLength)
+        public static bool CheckLength(string i_InputString, int i_RequiredLength)
         {
-            if (i_InputString.Length == i_RequiredLength)//If string length is VALID as required - return true
-            {
-                return true;
-            }
-            return false;
+            return (i_InputString.Length == i_RequiredLength);//If string length is VALID as required - return true
         }
         public static int GetDecimalValue(string i_InputString)
         {
             int counter = 0;
             int exponent = 0;
-            for (int index = i_InputString.Length - 1; index >= 0; index--)
+            for(int index = i_InputString.Length - 1; index >= 0; index--)
             {
                 counter += int.Parse(i_InputString[index].ToString()) * (int)(Math.Pow(2, exponent));
                 exponent++;
@@ -92,9 +83,9 @@ The avarage number '1' in the all inputs = {1}", CheckAvarageFromThisNumber(sbAl
         public static int CountHowManyFromThisNumber(string i_InputString, char i_TargetToCheck)
         {
             int counter = 0;
-            for (int index = 0; index < i_InputString.Length; index++)
+            for(int index = 0; index < i_InputString.Length; index++)
             {
-                if (i_InputString[index] == i_TargetToCheck)
+                if(i_InputString[index] == i_TargetToCheck)
                 {
                     counter++;
                 }
@@ -104,15 +95,15 @@ The avarage number '1' in the all inputs = {1}", CheckAvarageFromThisNumber(sbAl
         public static int HowManyIsPowerOfTwo(int i_number1, int i_number2, int i_number3)
         {
             int counter = 0;
-            if (IsPowerOfTwo(i_number1) == true)
+            if(IsPowerOfTwo(i_number1) == true)
             {
                 counter++;
             }
-            if (IsPowerOfTwo(i_number2) == true)
+            if(IsPowerOfTwo(i_number2) == true)
             {
                 counter++;
             }
-            if (IsPowerOfTwo(i_number3) == true)
+            if(IsPowerOfTwo(i_number3) == true)
             {
                 counter++;
             }
@@ -120,20 +111,20 @@ The avarage number '1' in the all inputs = {1}", CheckAvarageFromThisNumber(sbAl
         }
         public static bool IsPowerOfTwo(int i_NumberToCheck)
         {
-            return ((i_NumberToCheck & i_NumberToCheck - 1) == 0);
+            return (i_NumberToCheck & i_NumberToCheck - 1) == 0;
         }
         public static int HowManyNumbersIsAcending(string i_InputStrNum1, string i_InputStrNum2, string i_InputStrNum3)
         {
             int counter = 0;
-            if (IsAcendingNumber(i_InputStrNum1) == true)
+            if(IsAcendingNumber(i_InputStrNum1) == true)
             {
                 counter++;
             }
-            if (IsAcendingNumber(i_InputStrNum2) == true)
+            if(IsAcendingNumber(i_InputStrNum2) == true)
             {
                 counter++;
             }
-            if (IsAcendingNumber(i_InputStrNum3) == true)
+            if(IsAcendingNumber(i_InputStrNum3) == true)
             {
                 counter++;
             }
@@ -141,13 +132,13 @@ The avarage number '1' in the all inputs = {1}", CheckAvarageFromThisNumber(sbAl
         }
         public static bool IsAcendingNumber(string i_inputStrNum)
         {
-            if (i_inputStrNum.Length == 1)
+            if(i_inputStrNum.Length == 1)
             {
                 return true;//check
             }
-            for (int index = 0; index < i_inputStrNum.Length - 1; index++)
+            for(int index = 0; index < i_inputStrNum.Length - 1; index++)
             {
-                if (i_inputStrNum[index] >= i_inputStrNum[index + 1])
+                if(i_inputStrNum[index] >= i_inputStrNum[index + 1])
                 {
                     return false;
                 }

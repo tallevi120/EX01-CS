@@ -1,16 +1,17 @@
-﻿using System;
-namespace B21_Ex01_3
+﻿namespace B21_Ex01_3
 {
+    using System;
+
     public class Program
     {
         public static void Main()
         {
-            int     heightForHourglass;
-            Console.WriteLine(string.Format("Hello, Please enter integer number for the height of the hourglass :"));
+            int heightForHourglass;
+            Console.WriteLine("Hello, Please enter integer number for the height of the hourglass :");
             heightForHourglass = TakeNumberFromTheUser();
             B21_Ex01_2.Program.PrintHourglass(heightForHourglass);
-            Console.ReadLine();//delete in the end !!!
         }
+
         public static int TakeNumberFromTheUser()
         {
             int    heightForHourglass = default;
@@ -22,15 +23,24 @@ namespace B21_Ex01_3
                 i_IfInputInvalid = int.TryParse(inputFromUser, out heightForHourglass);
                 if(i_IfInputInvalid == false)
                 {
-                    Console.WriteLine("Invalid input, please enter only integer :");
+                    Console.WriteLine("Invalid input, please enter only positive integer :");
+                }
+
+                if(heightForHourglass < 0)
+                {
+                    Console.WriteLine("Invalid input, please enter only positive integer :");
+                    i_IfInputInvalid = false;
                 }
             }
+
             if (CheckIfDouble(heightForHourglass))
             {
                 heightForHourglass--;
             }
+
             return heightForHourglass;
         }
+
         public static bool CheckIfDouble(int i_InputNumber)
         {
             return (i_InputNumber % 2) == 0;

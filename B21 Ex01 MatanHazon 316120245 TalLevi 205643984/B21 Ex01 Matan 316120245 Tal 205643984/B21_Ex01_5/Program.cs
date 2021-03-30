@@ -27,7 +27,7 @@
                 {
                     if (CheckIfNumbersString(inputFromUser))
                     {
-                        return long.Parse(inputFromUser).ToString(); ;
+                        return long.Parse(inputFromUser).ToString();
                     }
                 }
 

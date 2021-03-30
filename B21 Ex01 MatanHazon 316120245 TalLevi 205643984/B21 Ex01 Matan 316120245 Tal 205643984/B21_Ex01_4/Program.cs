@@ -41,7 +41,7 @@
                     if (CheckIfNumbersString(inputFromUser))
                     {
                         typeOfString = "Numbers";
-                        return inputFromUser;
+                        return long.Parse(inputFromUser).ToString();
                     }
                 }
 

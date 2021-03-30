@@ -1,14 +1,15 @@
-﻿using System;
-namespace B21_Ex01_2
+﻿namespace B21_Ex01_2
 {
+    using System;
+
     public class Program
     {
         public static void Main()
         {
             int height = 5;
             PrintHourglass(height);
-            Console.ReadLine();//delete in the end !!!
         }
+
         public static void PrintHourglass(int i_HeightOfHourglass, int i_NumOfSpaces = 0)
         {
             if(i_HeightOfHourglass > 0)
@@ -21,6 +22,7 @@ namespace B21_Ex01_2
                 }
             }
         }
+
         public static void PrintLineInHourglass(int i_HeightOfHourglass, int i_NumOfSpaces = 0)
         {
             int sizeOfLine = i_HeightOfHourglass;
@@ -29,11 +31,13 @@ namespace B21_Ex01_2
                 Console.Write(" ");
                 i_NumOfSpaces--;
             }
+
             while (sizeOfLine != 0)
             {
                 Console.Write("*");
                 sizeOfLine--;
             }
+
             Console.Write("\n");
         }
     }

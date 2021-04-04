@@ -1,4 +1,4 @@
-﻿namespace B21_Ex01_4
+﻿namespace B21_Ex01_04
 {
     using System;
 
@@ -8,13 +8,17 @@
         {
             string userInputString;
             string typeOfString;
-            int numToBeDivided = 4;
+            int    numToBeDivided = 4;
+            bool   isDividedByNumberResult;
             Console.WriteLine("Hello, Please enter string with 10 characters, only digits or only letters :");
-            userInputString = TakeNumberFromTheUser(out typeOfString);
-            Console.WriteLine(string.Format("The input is a polindrom ? {0}", IsPolindrom(userInputString, 0, userInputString.Length - 1)));
+            TakeNumberFromTheUser(out typeOfString, out userInputString);
+            Console.WriteLine(string.Format("The input is a polindrom ? {0}", 
+                IsPolindrom(userInputString, 0, userInputString.Length - 1)));
             if(typeOfString == "Numbers")
             {
-                Console.WriteLine(string.Format("The input divided by {0} without residue ? {1}", numToBeDivided, IsDividedByNumber(userInputString, numToBeDivided)));
+                IsDividedByNumber(userInputString, numToBeDivided, out isDividedByNumberResult);
+                Console.WriteLine(string.Format("The input divided by {0} without residue ? {1}", 
+                    numToBeDivided, isDividedByNumberResult));
             }
 
             if(typeOfString == "Letters")
@@ -23,25 +27,32 @@
             }
         }
 
-        public static string TakeNumberFromTheUser(out string typeOfString)
+        public static void TakeNumberFromTheUser(out string o_TypeOfString, out string o_NumberFromTheUser)
         {
             string inputFromUser = default;
             int    requiredLength = 10;
-            while (true)
+            bool   checkIfLettersStringResult = default;
+            bool   checkIfNumbersString = default;
+            while(true)
             {
+                o_NumberFromTheUser = default;
                 inputFromUser = Console.ReadLine();
                 if(inputFromUser.Length == requiredLength)
                 {
-                    if (CheckIfLettersString(inputFromUser))
+                    CheckIfLettersString(inputFromUser, out checkIfLettersStringResult);
+                    if(checkIfLettersStringResult)
                     {
-                        typeOfString = "Letters";
-                        return inputFromUser;
+                        o_TypeOfString = "Letters";
+                        o_NumberFromTheUser = inputFromUser;
+                        break;
                     }
 
-                    if (CheckIfNumbersString(inputFromUser))
+                    CheckIfDigitsString(inputFromUser, out checkIfNumbersString);
+                    if(checkIfNumbersString)
                     {
-                        typeOfString = "Numbers";
-                        return long.Parse(inputFromUser).ToString();
+                        o_TypeOfString = "Numbers";
+                        o_NumberFromTheUser = long.Parse(inputFromUser).ToString();
+                        break;
                     }
                 }
 
@@ -49,63 +60,60 @@
             }
         }
 
-        public static bool CheckIfLettersString(string inputString)
+        public static void CheckIfLettersString(string i_InputString, out bool o_IfString)
         {
-            for (int index = 0; index < inputString.Length; index++)
+            o_IfString = true;
+            for(int index = 0; index < i_InputString.Length; index++)
             {
-                if (char.IsLetter(inputString[index]) == false)
+                if(char.IsLetter(i_InputString[index]) == false)
                 {
-                    return false;
+                    o_IfString = false;
                 }
             }
-
-            return true;
         }
 
-        public static bool CheckIfNumbersString(string inputString)
+        public static void CheckIfDigitsString(string i_InputString, out bool o_IfNumber)
         {
-            for (int index = 0; index < inputString.Length; index++)
+            o_IfNumber = true;
+            for(int index = 0; index < i_InputString.Length; index++)
             {
-                if (char.IsDigit(inputString[index]) == false)
+                if(char.IsDigit(i_InputString[index]) == false)
                 {
-                    return false;
+                    o_IfNumber = false;
                 }
             }
-
-            return true;
         }
 
-        public static bool IsPolindrom(string inputString, int start, int end)
+        public static bool IsPolindrom(string i_InputString, int i_Start, int i_End)
         {
-            if(start >= end)
+            if(i_Start >= i_End)
             {
                 return true;
             }
 
-            if(inputString[start] == inputString[end])
+            if(i_InputString[i_Start] == i_InputString[i_End])
             {
-                return IsPolindrom(inputString, ++start, --end);
+                return IsPolindrom(i_InputString, ++i_Start, --i_End);
             }
 
             return false;
         }
 
-        public static bool IsDividedByNumber(string i_UserInputString, int i_NumToBeDivided)
+        public static void IsDividedByNumber(string i_UserInputString, int i_NumToBeDivided, out bool o_IfDivided)
         {
-            if (long.Parse(i_UserInputString) % i_NumToBeDivided == 0)
-            { 
-                return true;
+            o_IfDivided = false;
+            if(long.Parse(i_UserInputString) % i_NumToBeDivided == 0)
+            {
+                o_IfDivided = true;
             }
-
-            return false;
         }
 
         public static int HowManyUppercase(string i_UserInputString)
         {
             int counter = 0;
-            for (int index = 0; index < i_UserInputString.Length; index++)
+            for(int index = 0; index < i_UserInputString.Length; index++)
             {
-                if (char.IsUpper(i_UserInputString[index])) 
+                if(char.IsUpper(i_UserInputString[index])) 
                 {
                     counter++;
                 }

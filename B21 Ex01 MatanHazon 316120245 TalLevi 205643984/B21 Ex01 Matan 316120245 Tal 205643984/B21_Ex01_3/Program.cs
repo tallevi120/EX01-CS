@@ -1,4 +1,4 @@
-﻿namespace B21_Ex01_3
+﻿namespace B21_Ex01_03
 {
     using System;
 
@@ -9,7 +9,7 @@
             int heightForHourglass;
             Console.WriteLine("Hello, Please enter integer number for the height of the hourglass :");
             heightForHourglass = TakeNumberFromTheUser();
-            B21_Ex01_2.Program.PrintHourglass(heightForHourglass);
+            B21_Ex01_02.Program.PrintHourglass(heightForHourglass);
         }
 
         public static int TakeNumberFromTheUser()

@@ -1,4 +1,4 @@
-﻿namespace B21_Ex01_5
+﻿namespace B21_Ex01_05
 {
     using System;
 
@@ -12,20 +12,24 @@
             userInputString = TakeNumberFromTheUser();
             Console.WriteLine(string.Format("The biggest digit in input is: {0}", FindBiggestDigit(userInputString)));
             Console.WriteLine(string.Format("The smallest digit in input is: {0}", FindSmallestDigit(userInputString)));
-            Console.WriteLine(string.Format("We have {0} digits that divided by {1} without residue.", HowManyDigitsDivided(userInputString, numToBeDivided), numToBeDivided));
-            Console.WriteLine(string.Format("We have {0} digits that bigger than {1}.", HowManyDigitsBiggerThanNumber(userInputString, int.Parse(userInputString) % 10), int.Parse(userInputString) % 10));
+            Console.WriteLine(string.Format("We have {0} digits that divided by {1} without residue.", 
+                HowManyDigitsDivided(userInputString, numToBeDivided), numToBeDivided));
+            Console.WriteLine(string.Format("We have {0} digits that bigger than {1}.", 
+                HowManyDigitsBiggerThanNumber(userInputString, int.Parse(userInputString) % 10), int.Parse(userInputString) % 10));
         }
 
         public static string TakeNumberFromTheUser()
         {
             string inputFromUser = default;
-            int requiredLength = 6;
-            while (true)
+            int    requiredLength = 6;
+            bool   checkIfNumbersStringResult = default;
+            while(true)
             {
                 inputFromUser = Console.ReadLine();
-                if (inputFromUser.Length == requiredLength)
+                if(inputFromUser.Length == requiredLength)
                 {
-                    if (CheckIfNumbersString(inputFromUser))
+                    CheckIfDigitsString(inputFromUser, out checkIfNumbersStringResult);
+                    if(checkIfNumbersStringResult)
                     {
                         return long.Parse(inputFromUser).ToString();
                     }
@@ -35,17 +39,16 @@
             }
         }
 
-        public static bool CheckIfNumbersString(string inputString)
+        public static void CheckIfDigitsString(string i_InputString, out bool o_IfNumber)
         {
-            for (int index = 0; index < inputString.Length; index++)
+            o_IfNumber = true;
+            for(int index = 0; index < i_InputString.Length; index++)
             {
-                if (char.IsDigit(inputString[index]) == false)
+                if(char.IsDigit(i_InputString[index]) == false)
                 {
-                    return false;
+                    o_IfNumber = false;
                 }
             }
-
-            return true;
         }
 
         public static int FindBiggestDigit(string i_InputString)
@@ -65,9 +68,9 @@
         public static int FindSmallestDigit(string i_InputString)
         {
             int smallest = 9;
-            for (int index = 0; index < i_InputString.Length; index++)
+            for(int index = 0; index < i_InputString.Length; index++)
             {
-                if (int.Parse(i_InputString[index].ToString()) < smallest)
+                if(int.Parse(i_InputString[index].ToString()) < smallest)
                 {
                     smallest = int.Parse(i_InputString[index].ToString());
                 }
@@ -78,18 +81,13 @@
 
         public static bool IsDividedByNumber(int i_Digit, int i_NumToBeDivided)
         {
-            if (i_Digit % i_NumToBeDivided == 0)
-            {
-                return true;
-            }
-
-            return false;
+            return i_Digit % i_NumToBeDivided == 0;
         }
 
         public static int HowManyDigitsDivided(string i_UserInput, int i_NumToBeDivided)
         {
             int counter = 0;
-            for (int index = 0; index < i_UserInput.Length; index++)
+            for(int index = 0; index < i_UserInput.Length; index++)
             {
                 if(IsDividedByNumber(int.Parse(i_UserInput[index].ToString()), i_NumToBeDivided))
                 {
@@ -103,9 +101,9 @@
         public static int HowManyDigitsBiggerThanNumber(string i_InputString, int i_Number)
         {
             int counter = 0;
-            for (int index = 0; index < i_InputString.Length - 1; index++)
+            for(int index = 0; index < i_InputString.Length - 1; index++)
             {
-                if (int.Parse(i_InputString[index].ToString()) > i_Number)
+                if(int.Parse(i_InputString[index].ToString()) > i_Number)
                 {
                     counter++;
                 }

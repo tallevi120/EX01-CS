@@ -13,7 +13,7 @@
             StringBuilder sbAllNumbers = new StringBuilder(string.Empty, requiredLength * numOfInputs);
             Console.WriteLine(string.Format("Hello, Please enter {0} numbers, each number contains {1} digits in binary format:",
                 numOfInputs, requiredLength));
-            for(int index = 1; index <= numOfInputs; index++)
+            for(int index = 1 ; index <= numOfInputs ; index++)
             {
                 sbAllNumbers.Append(TakeNumberFromTheUser(requiredLength));
             }
@@ -34,7 +34,6 @@ CheckAvarageFromThisNumber(sbAllNumbers.ToString(), '1', numOfInputs)));
                 HowManyNumbersIsAcending(number1.ToString(), number2.ToString(), number3.ToString())));
             Console.WriteLine(string.Format(@"The smallest number is {0}", FindSmallestNumber(number1, number2, number3)));
             Console.WriteLine(string.Format(@"The biggest number is {0}", FindBiggestNumber(number1, number2, number3)));
-            Console.ReadLine();
         }
 
         public static string TakeNumberFromTheUser(int i_RequiredLength)
@@ -84,7 +83,7 @@ CheckAvarageFromThisNumber(sbAllNumbers.ToString(), '1', numOfInputs)));
         {
             int counter = 0;
             int exponent = 0;
-            for(int index = i_InputString.Length - 1; index >= 0; index--)
+            for(int index = i_InputString.Length - 1 ; index >= 0 ; index--)
             {
                 counter += int.Parse(i_InputString[index].ToString()) * (int)Math.Pow(2, exponent);
                 exponent++;
@@ -102,7 +101,7 @@ CheckAvarageFromThisNumber(sbAllNumbers.ToString(), '1', numOfInputs)));
         public static int CountHowManyFromThisNumber(string i_InputString, char i_TargetToCheck)
         {
             int counter = 0;
-            for(int index = 0; index < i_InputString.Length; index++)
+            for(int index = 0 ; index < i_InputString.Length ; index++)
             {
                 if(i_InputString[index] == i_TargetToCheck)
                 {
@@ -141,7 +140,7 @@ CheckAvarageFromThisNumber(sbAllNumbers.ToString(), '1', numOfInputs)));
 
         public static int HowManyNumbersIsAcending(string i_InputStrNum1, string i_InputStrNum2, string i_InputStrNum3)
         {
-            int counter = 0;
+            int  counter = 0;
             bool isAcendingNumberResult = default;
             IsAcendingNumber(i_InputStrNum1, out isAcendingNumberResult);
             if(isAcendingNumberResult == true)
@@ -169,7 +168,7 @@ CheckAvarageFromThisNumber(sbAllNumbers.ToString(), '1', numOfInputs)));
             o_IfIsAcendingNumber = true;
             if(i_inputStrNum.Length != 1)
             {
-                for(int index = 0; index < i_inputStrNum.Length - 1; index++)
+                for(int index = 0 ; index < i_inputStrNum.Length - 1 ; index++)
                 {
                     if(i_inputStrNum[index] >= i_inputStrNum[index + 1])
                     {

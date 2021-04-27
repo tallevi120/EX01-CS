@@ -63,7 +63,7 @@
         public static void CheckIfLettersString(string i_InputString, out bool o_IfString)
         {
             o_IfString = true;
-            for(int index = 0; index < i_InputString.Length; index++)
+            for(int index = 0 ; index < i_InputString.Length ; index++)
             {
                 if(char.IsLetter(i_InputString[index]) == false)
                 {
@@ -75,7 +75,7 @@
         public static void CheckIfDigitsString(string i_InputString, out bool o_IfNumber)
         {
             o_IfNumber = true;
-            for(int index = 0; index < i_InputString.Length; index++)
+            for(int index = 0 ; index < i_InputString.Length ; index++)
             {
                 if(char.IsDigit(i_InputString[index]) == false)
                 {
@@ -111,7 +111,7 @@
         public static int HowManyUppercase(string i_UserInputString)
         {
             int counter = 0;
-            for(int index = 0; index < i_UserInputString.Length; index++)
+            for(int index = 0 ; index < i_UserInputString.Length ; index++)
             {
                 if(char.IsUpper(i_UserInputString[index])) 
                 {

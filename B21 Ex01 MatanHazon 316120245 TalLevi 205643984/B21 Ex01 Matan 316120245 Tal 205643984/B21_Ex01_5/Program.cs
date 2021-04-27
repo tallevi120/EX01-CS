@@ -42,7 +42,7 @@
         public static void CheckIfDigitsString(string i_InputString, out bool o_IfNumber)
         {
             o_IfNumber = true;
-            for(int index = 0; index < i_InputString.Length; index++)
+            for(int index = 0 ; index < i_InputString.Length ; index++)
             {
                 if(char.IsDigit(i_InputString[index]) == false)
                 {
@@ -54,7 +54,7 @@
         public static int FindBiggestDigit(string i_InputString)
         {
             int biggest = 0;
-            for(int index = 0; index < i_InputString.Length; index++)
+            for(int index = 0 ; index < i_InputString.Length ; index++)
             {
                 if(int.Parse(i_InputString[index].ToString()) > biggest)
                 {
@@ -68,7 +68,7 @@
         public static int FindSmallestDigit(string i_InputString)
         {
             int smallest = 9;
-            for(int index = 0; index < i_InputString.Length; index++)
+            for(int index = 0 ; index < i_InputString.Length ; index++)
             {
                 if(int.Parse(i_InputString[index].ToString()) < smallest)
                 {
@@ -87,7 +87,7 @@
         public static int HowManyDigitsDivided(string i_UserInput, int i_NumToBeDivided)
         {
             int counter = 0;
-            for(int index = 0; index < i_UserInput.Length; index++)
+            for(int index = 0 ; index < i_UserInput.Length ; index++)
             {
                 if(IsDividedByNumber(int.Parse(i_UserInput[index].ToString()), i_NumToBeDivided))
                 {
@@ -101,7 +101,7 @@
         public static int HowManyDigitsBiggerThanNumber(string i_InputString, int i_Number)
         {
             int counter = 0;
-            for(int index = 0; index < i_InputString.Length - 1; index++)
+            for(int index = 0 ; index < i_InputString.Length - 1 ; index++)
             {
                 if(int.Parse(i_InputString[index].ToString()) > i_Number)
                 {
